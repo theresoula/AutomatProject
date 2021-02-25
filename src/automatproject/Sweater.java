@@ -11,4 +11,8 @@ package automatproject;
  */
 public class Sweater extends Item {
     
+    public Sweater(String name, String color, char itemSize, int cost){
+        super(name, color, itemSize, cost);
+    }
+    
 }
