@@ -6,6 +6,7 @@
 package automatproject;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -18,29 +19,64 @@ public class AutomatProject {
      */
     public static void main(String[] args) {
         
-        //ArrayList för nya Items 
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Sweater("COS Tshirt", "White", 'M', 250));
-        items.add(new Sweater("COS Tshirt", "Grey", 'S', 250));
-
-        // size G, T, V (grande, tall, venti Starbucks storlekar
-        items.add(new Beverage("Cafe latte", "Color", 'G', 35, true));
-        items.add(new Beverage("Nitro Cold Brew", "Color", 'T', 45, false));
+   
+        //Lista av beverage och sweaters
+        ArrayList<Beverage> bevs = new ArrayList<>();
+        bevs.add(new Beverage("Coffee", "Black", 'G', 35, true));
+        bevs.add(new Beverage("Nitro Cold Brew", "Color", 'T', 45, false));
         
-        
-        
-        for(Item i: items){
-            System.out.println(i.name +  " " + i.cost + " SEK");
-        }
-        
+        ArrayList<Sweater> sevs = new ArrayList<>();
+        sevs.add(new Sweater("T shirt COS", "White", 'M', 250));
+        sevs.add(new Sweater("T shirt COS", "Grey", 'S', 250));
        
+        //int menu = 0;
+        //do{
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Skriv nummer 1 eller 2");
+        int menu = scan.nextInt();
+        
+        
+        switch (menu){
+            case 1:
+                showAll(bevs, sevs);
+                break;
+            case 2:
+                showBev(bevs);
+                break;
+            default:
+                System.out.println("Välj mellan 0-5");
+                
+        }
+       //}while (menu != 0);
+        
+        //showAll(bevs, sevs);
+        //showBev(bevs);
+        
         
     }
     
-     /*public static void showMe(ArrayList<Item> items){
-            for(Item i: items){
-                i.hotOrCold();
+   
+    public static void showAll(ArrayList<Beverage> bevs, ArrayList<Sweater> sevs){
+            
+            for(Beverage i: bevs){
+            //i.hotOrCold();
+            //i.useItem();
+            i.showItem();
+            } 
+        
+            for(Sweater i: sevs){
+            i.showItem();
             }
-        }*/
+           
+        }
+    
+    public static void showBev(ArrayList<Beverage> bevs){
+            for(Beverage i: bevs){
+                i.showItem();
+            }
+    }
+        
+    
     
 }

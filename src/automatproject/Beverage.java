@@ -5,11 +5,13 @@
  */
 package automatproject;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author theresoula
  */
-public class Beverage extends Item {
+public class Beverage extends Item implements MethodsItem{
     
     //eget attribut
     public boolean tempBev; 
@@ -20,12 +22,30 @@ public class Beverage extends Item {
     }
     
     public void hotOrCold(){
-        //om boolean temperatur på bevarge är lika med true
+        //om boolean temperatur på beverage är lika med true
         if(tempBev){
-            System.out.println(name + "Be Careful! Beverage is HOT!");       
+            System.out.println(" Be Careful! Beverage is HOT!");       
         }else{ //false
-            System.out.println(name + "Beverage is ice cold!");
+            System.out.println(" Beverage is ice cold!");
         }
+    }
+
+    @Override
+    public void showItem() {
+        System.out.println(name + " " + cost + " SEK");
+        System.out.println("Size: " + itemSize);
+        System.out.println("--- ---");
+             
+    }
+
+    @Override
+    public void buyItem() {
+        System.out.println("" + tempBev);
+    }
+
+    @Override
+    public void useItem() {
+        System.out.println("Enjoy your drink!");
     }
     
 }
