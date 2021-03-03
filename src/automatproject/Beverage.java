@@ -6,6 +6,7 @@
 package automatproject;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -22,16 +23,19 @@ public class Beverage extends Item implements MethodsItem{
     }
     
     public void hotOrCold(){
-        //om boolean temperatur på beverage är lika med true
+        
+        //Om boolean temperatur på beverage är lika med true
         if(tempBev){
-            System.out.println(" Be Careful! Beverage is HOT!");       
+            System.out.println("Be Careful! Beverage is HOT!"); 
+            
         }else{ //false
-            System.out.println(" Beverage is ice cold!");
+            System.out.println("Beverage is ice cold!");
         }
     }
 
     @Override
     public void showItem() {
+        
         System.out.println(name + " " + cost + " SEK");
         System.out.println("Size: " + itemSize);
         System.out.println("--- ---");
@@ -40,11 +44,33 @@ public class Beverage extends Item implements MethodsItem{
 
     @Override
     public void buyItem() {
-        System.out.println("" + tempBev);
+        
+        Scanner scan = new Scanner(System.in);
+       
+        System.out.println("Enter payment: ");
+        int pay = scan.nextInt();
+       
+        if(cost == pay || cost < pay){
+            
+            System.out.println("Thank you!");
+            
+            if(cost < pay){
+                System.out.println("Your change is " + (pay - cost));
+            }
+            
+            useItem();// Anropar funktionen att "använda varan" när betalning genomförts
+            
+        }else if (cost > pay) {
+            System.out.println("Not enough cash");          
+        }
+        
+        
     }
 
     @Override
     public void useItem() {
+        
+        hotOrCold(); // Anropar metod med boolean för att visa om dryck är varm eller kall  
         System.out.println("Enjoy your drink!");
     }
     

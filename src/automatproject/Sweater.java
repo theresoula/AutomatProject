@@ -5,6 +5,8 @@
  */
 package automatproject;
 
+import java.util.Scanner;
+
 /**
  *
  * @author theresoula
@@ -17,6 +19,7 @@ public class Sweater extends Item implements MethodsItem{
 
     @Override
     public void showItem() {
+        
         System.out.println(name + " " + cost + " SEK");
         System.out.println("Size: " + itemSize);
         System.out.println("Color: " + color);
@@ -26,13 +29,36 @@ public class Sweater extends Item implements MethodsItem{
 
     @Override
     public void buyItem() {
-        System.out.println("Show me the money!");
+        
+        Scanner scan = new Scanner(System.in);
+        
+        // --- Användaren betalar ----
+        System.out.println("Enter payment: ");
+        int pay = scan.nextInt();
+        
+        // Conditions om summan är över kostnaden, visa växel. För lite pengar, ge felmeddelande
+        if(cost == pay || cost < pay){
+            
+            System.out.println("Thank you!");
+            
+            if(cost < pay){
+                System.out.println("Your change is " + (pay - cost)+ " SEK");
+                System.out.println("");
+            }
+            
+            useItem(); // Anropar funktionen att "använda varan" när betalning genomförts
+            
+        }else if (cost > pay) {
+            System.out.println("Not enough cash, please try again");          
+        }
+        
     }
     
 
     @Override
     public void useItem() {
-        System.out.println("Show me the money!");
+        System.out.println("Try it on, you'll look smashing!");
+        System.out.println("");
     }
     
 }
