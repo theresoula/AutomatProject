@@ -56,6 +56,7 @@ public class Beverage extends Item implements MethodsItem{
             
             if(cost < pay){
                 System.out.println("Your change is " + (pay - cost));
+                System.out.println("");
             }
             
             useItem();// Anropar funktionen att "använda varan" när betalning genomförts
@@ -72,6 +73,48 @@ public class Beverage extends Item implements MethodsItem{
         
         hotOrCold(); // Anropar metod med boolean för att visa om dryck är varm eller kall  
         System.out.println("Enjoy your drink!");
+    }
+    
+    public static void chooseItemToBuy(ArrayList<Beverage> bevs){
+        
+        Scanner scan = new Scanner(System.in);
+        
+        
+        try{
+            
+        System.out.println("Choose item 1 - 3");
+        int arrayNum = scan.nextInt();
+            
+        //---- Välja tröja och sedan betala ----   
+        Beverage beverages = bevs.get(arrayNum -1);
+        System.out.println("Selected item: " + beverages.name + " " + beverages.cost + " SEK");
+        
+        // --- Välja om användaren vill köpa vald vara
+        System.out.println("Do you want to buy this item?");
+        System.out.println("[1] Yes");
+        System.out.println("[2] No");
+        
+        int buySelected = scan.nextInt();
+        
+            switch(buySelected){
+            
+                case 1:
+                //--- Hämtar tröjan ur lista efter användarens val och anropar metoden att köpa vara
+                bevs.get(arrayNum -1).buyItem();
+                break;
+            
+                case 2:
+                //går ut ur switch case
+                System.out.println("Välj i menyn");
+                break;
+                
+                default:
+            }
+        
+        }catch (Exception e){
+            System.out.println("Item not find");
+        }
+        
     }
     
 }

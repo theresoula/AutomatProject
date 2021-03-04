@@ -5,6 +5,7 @@
  */
 package automatproject;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -61,4 +62,44 @@ public class Sweater extends Item implements MethodsItem{
         System.out.println("");
     }
     
+    public static void chooseItemToBuy(ArrayList<Sweater> sevs){
+        
+        Scanner scan = new Scanner(System.in);
+      
+        try{
+            
+        System.out.println("Choose item 1 - 3");
+        int arrayNum = scan.nextInt();
+            
+        //---- Välja tröja och sedan betala ----   
+        Sweater sweaters = sevs.get(arrayNum -1);
+        System.out.println("Selected item: " + sweaters.name + " " + sweaters.cost + " SEK");
+        
+        // --- Välja om användaren vill köpa vald vara
+        System.out.println("Do you want to buy this item?");
+        System.out.println("[1] Yes");
+        System.out.println("[2] No");
+        
+        int buySelected = scan.nextInt();
+        
+            switch(buySelected){
+            
+                case 1:
+                //--- Hämtar tröjan ur lista efter användarens val och anropar metoden att köpa vara
+                sevs.get(arrayNum -1).buyItem();
+                break;
+            
+                case 2:
+                //går ut ur switch case
+                System.out.println("Välj i menyn");
+                break;
+                
+                default:
+            }
+        
+        }catch (Exception e){
+            System.out.println("Item not find");
+        }
+       
+    }
 }

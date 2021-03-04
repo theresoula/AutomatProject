@@ -6,6 +6,7 @@
 package automatproject;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,7 @@ public class AutomatProject {
         sevs.add(new Sweater("T shirt COS", "White", 'M', 250));
         sevs.add(new Sweater("T shirt COS", "Grey", 'S', 250));
         sevs.add(new Sweater("Cardigan Arken", "Brown", 'M', 750));
+       
         
         
         // ---- Startar programmet---- 
@@ -59,19 +61,21 @@ public class AutomatProject {
                 break;
             case 2:
                 showBeverage(bevs);
+                Beverage.chooseItemToBuy(bevs);
                 break;       
             case 3:
                 showSweater(sevs);
+                Sweater.chooseItemToBuy(sevs);
                 break;
             case 4:
-                 chooseItemToBuy(bevs, sevs);                 
+                 //chooseBeverageToBuy(bevs);                 
                 break;
             case 5:
                 System.out.println("Thanks for visiting Automat Shop");
                 //System.exit(0);
                 break;    
             default:
-                System.out.println("Please enter a number between 1-5 to choose in the menu"); 
+                System.out.println("Please enter a number between 1-4 to choose in the menu or 5 to exit"); 
             }
        }
         
@@ -91,13 +95,13 @@ public class AutomatProject {
            
     }
     
- 
     
     public static void showBeverage(ArrayList<Beverage> bevs){
             for(Beverage i: bevs){
                 i.showItem();
             }
     }
+    
     
     public static void showSweater(ArrayList<Sweater> sevs){
             for(Sweater i: sevs){
@@ -106,61 +110,5 @@ public class AutomatProject {
     }
     
     
-    public static void chooseItemToBuy(ArrayList<Beverage> bevs, ArrayList<Sweater> sevs){
-        
-        Scanner scan = new Scanner(System.in);
-        /*
-        int buy = 0;
-        
-        while(buy!=2) {
-        System.out.println("Choose 1-2");
-        buy = scan.nextInt();
-        
-        switch(buy){
-            case 1:
-                System.out.println("hej");
-                break;
-            case 2:
-                System.out.println("då");
-                break;
-        }
-        */
-        
-        System.out.println("Choose item 1 - 3");
-        int arrayNum = scan.nextInt();
-        
-        /*if(arrayNum > bevs.size()) {
-            throw new ArrayIndexOutOfBoundsException("");
-        }*/
-       
-        //if(arrayNum > sevs.size()){
-        
-        //}
-        
-        /*try {
-            
-        int arrayNum => sevs.size();
-        }catch(ArrayIndexOutOfBoundsException e){
-        
-        }*/
-        
-        
-        // ---- Välja dryck och betala-----
-        //Beverage beverage = bevs.get(arrayNum -1);
-        //System.out.println("Selected item: " + beverage.name);
-        
-        //---Hämtar dryck ur lista efter användarens val och anropar metoden att köpa vara
-        //bevs.get(arrayNum -1).buyItem();
-        
-        //----- Välja tröja och sedan betala----
-        Sweater sweaters = sevs.get(arrayNum -1);
-        System.out.println("Selected item: " + sweaters.name + " " + sweaters.cost + " SEK");
-        
-        //---Hämtar tröjan ur lista efter användarens val och anropar metoden att köpa vara
-        sevs.get(arrayNum -1).buyItem();
-        
-
-        }
-        
             
 }
