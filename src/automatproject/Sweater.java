@@ -93,12 +93,12 @@ public class Sweater extends Item implements MethodsItem{
                 //går ut ur switch case
                 System.out.println("Välj i menyn");
                 break;
-                
                 default:
+                // vet ej om denna är nödvändig vid try/catch exception
             }
         
         }catch (Exception e){
-            System.out.println("Item not find");
+            System.out.println("Item not find or something else went wrong, please try again!");
         }
        
     }
